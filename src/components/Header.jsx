@@ -8,7 +8,7 @@ import cs from 'classnames';
 import setPropTypes from 'recompose/setPropTypes';
 import get from 'lodash/get';
 
-import '../css/Header';
+import '../scss/Header.scss';
 
 import { toggleChat } from '../actions';
 import { supportedChatServices } from '../util/supported-chats';
@@ -47,7 +47,6 @@ const Header = ({
           <ul className='nav navbar-nav'>
             {rustlers}
             {viewers}
-            {DONATE_PAYPAL_URL ? <li><a target='_blank' rel='noopener noreferrer' href={DONATE_PAYPAL_URL}><span className='header-donate'>Donate</span></a></li> : null}
           </ul>
           <ul className='nav navbar-nav navbar-right'>
             {!currentStreamService || !supportedChatServices.has(currentStreamService) ? null : <li onClick={() => toggleChat(false)} className={cs({ active: !isOtherChatActive })}><a role='button'>Destiny Chat</a></li>}

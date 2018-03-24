@@ -6,7 +6,7 @@ import lifecycle from 'recompose/lifecycle';
 
 import { setStream } from '../actions';
 
-import '../css/Streams';
+import '../scss/Streams.scss';
 import MainLayout from './MainLayout';
 import StreamThumbnail from './StreamThumbnail';
 
