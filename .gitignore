@@ -1,0 +1,8 @@
+node_modules
+lib
+public/assets/*
+public/index.html
+.env
+*.log
+*.sqlite
+.vscode

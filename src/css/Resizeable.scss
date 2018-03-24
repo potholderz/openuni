@@ -1,0 +1,39 @@
+
+.resizeable {
+  display: flex;
+}
+.resizeable-x {
+  flex-direction: row;
+}
+.resizeable-y {
+  flex-direction: column;
+}
+
+.resizeable-backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.resizeable-bar {
+  border-radius: 4px;
+  transition: background-color 0.25s ease;
+  cursor: col-resize;
+  &.react-draggable-dragging, &.react-draggable-dragging:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+.resizeable-bar-x {
+  .resizeable-bar-child {
+    height: 100%;
+  }
+}
+.resizeable-bar-y {
+  .resizeable-bar-child {
+    width: 100%;
+  }
+}

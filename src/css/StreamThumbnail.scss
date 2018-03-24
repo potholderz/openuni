@@ -1,0 +1,21 @@
+.stream-thumbnail {
+  border: 1px solid #5D5D5D;
+  background-color: #222;
+  margin-top: 1em;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .stream-caption {
+    padding: 9px;
+    color: #333;
+
+    a {
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

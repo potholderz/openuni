@@ -1,0 +1,21 @@
+[Unit]
+Description=Learn.
+#Requires=After=mysql.service       # Requires the mysql service to run first
+
+[Service]
+ExecStart=/usr/bin/node /srv/openuni/lib/server.js
+WorkingDirectory=/srv/openuni/
+Restart=always
+RestartSec=10
+LimitNOFILE=50000
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=rustla2
+
+User=openuni
+Group=openuni
+#Environment=NODE_ENV=production PORT=1337
+
+[Install]
+WantedBy=multi-user.target
