@@ -15,3 +15,12 @@ class IsUserOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         return obj.user == request.user
+
+class IsUploaderOrReadOnly(BasePermission):
+    message = 'You must be the uploader of the notes to access this'
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in SAFE_METHODS:
+            return True
+        return obj.uploader.user == request.user
+        

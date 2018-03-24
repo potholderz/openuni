@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'corsheaders',
 
+    'apps.stream'
 ]
 
 MIDDLEWARE = [

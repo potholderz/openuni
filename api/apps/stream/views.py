@@ -15,8 +15,12 @@ from rest_framework.generics import(
     ListAPIView,
     UpdateAPIView,
     RetrieveAPIView,
-    RetrieveUpdateAPIView
+    RetrieveUpdateAPIView,
 )
+
+from rest_framework.views import APIView
+from rest_framework import status
+
 
 from rest_framework.permissions import (
     AllowAny,
@@ -24,8 +28,11 @@ from rest_framework.permissions import (
     IsAdminUser,
     IsAuthenticatedOrReadOnly
 )
-from .permissions import IsStreamerOrReadOnly, IsUserOrReadOnly
+from .permissions import IsStreamerOrReadOnly, IsUserOrReadOnly, IsUploaderOrReadOnly
 from .serializers import *
+
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -59,6 +66,32 @@ class ProfileDetail(RetrieveAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileDetailSerializer
     permission_classes = [AllowAny]
+
+class NoteCreate(CreateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteCreateUpdateSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(uploader = self.request.user.profile)
+
+class NoteList(ListAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteListSerializer
+    permission_classes = [AllowAny]
+
+class NoteDetail(RetrieveAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteDetailSerialzer
+    permission_classes = [AllowAny]
+
+class NoteUpdate(RetrieveUpdateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteCreateUpdateSerializer
+    permission_classes = [IsUploaderOrReadOnly]
+
+    def perform_update(self, serializer):
+        serializer.save()
 
 class UserCreate(APIView):
     """

@@ -9,10 +9,12 @@ from rest_framework.serializers import(
     ReadOnlyField,
     Field
     )
+
 from rest_framework.validators import UniqueValidator
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Stream, Profile
+
+from .models import Stream, Profile, Note
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -36,6 +38,43 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'password')
 
 
+
+class NoteCreateUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = Note
+        fields = [
+            'title',
+            'description',
+            'uploader',
+            'service',
+            'link',
+            'noteType'
+        ]
+
+class NoteDetailSerialzer(ModelSerializer):
+    class Meta:
+        model = Note
+        fields = [
+            'id',
+            'title',
+            'description',
+            'uploader',
+            'service',
+            'link',
+            'noteType'
+        ]
+
+class NoteListSerializer(ModelSerializer):
+    uploader = ReadOnlyField()
+    class Meta:
+        model = Note
+        fields = [
+            'title',
+            'uploader',
+            'service',
+            'noteType'
+        ]
+
 class ProfileCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = Profile
@@ -46,13 +85,15 @@ class ProfileCreateUpdateSerializer(ModelSerializer):
 
 class ProfileDetailSerializer(ModelSerializer):
     name = ReadOnlyField()
+    uploads = NoteListSerializer(read_only = True)
     class Meta:
         model = Profile
         fields = [
             'id',
             'name'
             'user',
-            'stream'
+            'stream',
+            'uploads'
         ]
 
 class ProfileListSerializer(ModelSerializer):
@@ -62,13 +103,15 @@ class ProfileListSerializer(ModelSerializer):
         fields = [
             'id'
             'name'
-            'stream'
         ]
+
 
 class StreamCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = Stream
         fields = [
+            'title',
+            'description'
             'channel',
             'service',
             'live'
@@ -80,10 +123,13 @@ class StreamDetailSerializer(ModelSerializer):
         model = Stream
         fields = [
             'id',
+            'title',
+            'description'
             'channel',
             'service',
             'live',
             'viewers',
+            'featured',
             'streamer'
         ]
 
@@ -93,6 +139,7 @@ class StreamListSerializer(ModelSerializer):
         model = Stream
         fields = [
             'id',
+            'title',
             'service',
             'live',
             'viewers',

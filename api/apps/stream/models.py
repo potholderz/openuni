@@ -21,23 +21,23 @@ class Stream(models.Model):
         live: boolean if the stream is live or not
         viewers: integer that holds the amount of current viewers
     """
-
-    channel = models.CharField(max_length = 100)
-    service = models.CharField(max_length = 100)
+    title = models.CharField(max_length = 100, default = 'New Stream')
+    description = models.TextField()
+    channel = models.CharField(max_length = 100, blank = True)
+    service = models.CharField(max_length = 100, blank = True)
     live = models.BooleanField(default = False)
+    featured = models.BooleanField(default = False)
     viewers = models.PositiveIntegerField(default = 0)
 
     def __str__(self):
-        return self.profile.user.username
+        return self.title
     
     @property
     def streamer(self):
         return self.profile
         
 
-
-
-class Profile(model.Model):
+class Profile(models.Model):
     """
     This is a class for the Profiles Object
 
@@ -46,7 +46,7 @@ class Profile(model.Model):
         stream: The stream related to the profile. (FK)
 
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'profile')
     stream = models.OneToOneField(Stream, related_name = 'profile', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -58,9 +58,46 @@ class Profile(model.Model):
     @property
     def name(self):
         return self.user.username
+    
+    @property
+    def uploads(self):
+        return self.uploads
 
+class Note(models.Model):
+    """
+    This is the class for the Notes object
+
+    Attributes:
+        title: string that holds the title of the Notes
+        user: the user who the Notes is uploaded by
+        service: the service in which the Notes is being linked from
+        link: the link to the Notes 
+        noteType: the type of Notes
+    """
+    NOTES_CHOICES = (
+        ('video', 'video'),
+        ('pdf', 'pdf'),
+        ('csv', 'csv'),
+        ('audio', 'audio'),
+        ('compressed', 'compressed'),
+        ('text', 'text')
+    )
+
+
+    title = models.CharField(max_length = 100)
+    description = models.TextField()
+    uploader = models.ForeignKey(Profile, on_delete = models.CASCADE, related_name='uploads')
+    service = models.CharField(max_length = 100)
+    link = models.CharField(max_length = 100)
+    featured = models.BooleanField(default = False)
+    noteType = models.CharField(max_length = 15, choices = NOTES_CHOICES, default = 'text')
+
+
+    
 @receiver(post_save, sender = User)
 def create_profile_for_new_user(sender, created, instance, **kwargs):
     if created:
-        profile = Profile(user = instance)
+        stream = Stream()
+        stream.save()
+        profile = Profile(user = instance, stream = stream)
         profile.save()
