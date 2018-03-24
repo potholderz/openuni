@@ -14,12 +14,12 @@ import {
   setStream,
   setChatSize,
   fetchProfileIfLoggedIn,
-} from '../actions';
+} from '../../actions';
 
-import MainLayout from './MainLayout';
-import Resizeable from './Resizeable';
+import Lectures from '../../index';
+import Resizeable from '../Resizeable';
 import StreamEmbed from './StreamEmbed';
-import ChatEmbed from './ChatEmbed';
+import ChatEmbed from '../ChatEmbed';
 
 
 export const Stream = ({
@@ -49,7 +49,7 @@ export const Stream = ({
     right = temp;
   }
   return (
-    <MainLayout history={history} showFooter={false} rustlerCount={rustlerCount}>
+    <Lectures history={history} rustlerCount={rustlerCount}>
       <Resizeable
         className='grow-1'
         onResize={e => {
@@ -66,7 +66,7 @@ export const Stream = ({
         {left}
         {right}
       </Resizeable>
-    </MainLayout>
+    </Lectures>
   );
 };
 

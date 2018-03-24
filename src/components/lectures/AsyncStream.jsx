@@ -1,8 +1,8 @@
 /* global API */
 import React from 'react';
 
-import Error404 from './Error404';
-import Loadable from './Loadable';
+import Error404 from '../Error404';
+import Loadable from '../Loadable';
 
 import Stream from './Stream';
 

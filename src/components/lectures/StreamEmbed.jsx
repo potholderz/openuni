@@ -6,7 +6,7 @@ import AdvancedStreamEmbed from './AdvancedStreamEmbed';
 
 // Use `window.URL` as our WHATWG `URL` implementation. See
 // <http://caniuse.com/#feat=url> for the browsers which do not support this.
-const isValidAdvancedUrl = require('../util/is-valid-advanced-url')(window.URL);
+const isValidAdvancedUrl = require('../../util/is-valid-advanced-url')(window.URL);
 
 const getSrc = (channel, service) => {
   switch (service) {

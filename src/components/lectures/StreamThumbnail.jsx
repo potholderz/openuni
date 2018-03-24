@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import '../scss/StreamThumbnail.scss';
+import '../../scss/StreamThumbnail.scss';
 
 
 const StreamThumbnail = ({ overrustle_id, channel, service, thumbnail, live, rustlers, ...rest }) => {

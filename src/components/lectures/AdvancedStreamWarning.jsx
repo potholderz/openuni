@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../scss/AdvancedStreamWarning.scss';
+import '../../scss/AdvancedStreamWarning.scss';
 
 const AdvancedStreamWarning = ({ channel, onAccept }) => {
   return (

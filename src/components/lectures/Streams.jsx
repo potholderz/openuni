@@ -4,10 +4,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import lifecycle from 'recompose/lifecycle';
 
-import { setStream } from '../actions';
+import { setStream } from '../../actions';
 
-import '../scss/Streams.scss';
-import MainLayout from './MainLayout';
+import MainLayout from '../index';
 import StreamThumbnail from './StreamThumbnail';
 
 
@@ -41,12 +40,13 @@ const makeCategories = (categories, items) => {
         const { created_at, updated_at, viewers, ...rest } = stream;
 
         return (
-          <div className='col-xs-12 col-sm-4 col-md-3 col-lg-2' key={stream.id}>
+          <div className='six columns' key={stream.id}>
             <StreamThumbnail {...rest} />
           </div>
         );
       }
       )}
+      <div className='u-cf'></div>
     </div>
     : null
   );
@@ -58,23 +58,23 @@ const Streams = ({ history, streams }) => {
   if (streams_arr.length) {
     grid = makeCategories([
       {
-        header: 'Live OverRustle Streamers',
+        header: 'Featured Lectures',
         test: stream => Boolean(stream.overrustle_id) && stream.live,
       },
       {
-        header: 'Live Streams',
+        header: 'Live Lectures',
         test: stream => stream.live,
       },
       {
-        header: 'Offline Streams',
+        header: 'Offline Lectures',
         test: () => true,
       },
     ], streams_arr);
   }
 
   return (
-    <MainLayout history={history}>
-      <h1 className='streams-heading'>See what {streams_arr.reduce((sum, stream) => sum + stream.rustlers, 0)} rustlers are watching!</h1>
+    <MainLayout history={history} className='eight colums'>
+      <h1 className='streams-heading'> Lectures </h1>
       <div className='flex-column grow-1'>{grid}</div>
     </MainLayout>
   );
