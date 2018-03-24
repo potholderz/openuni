@@ -73,3 +73,5 @@ class UserCreate(APIView):
                 token = Token.objects.create(user=user)
                 json = serializer.get_unique_for_date_validators
                 json['token'] = token.key
+                return Response(json, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
