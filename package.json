@@ -7,19 +7,12 @@
     "node": ">=4"
   },
   "scripts": {
-    "prestart": "npm run -s migrate",
-    "start": "node ./lib/server.js",
-    "clean": "rm -rf lib public/assets public/index.html",
-    "build": "npm run clean && npm run build:babel && npm run build:bundle",
-    "build:babel": "BABEL_ENV=server babel src --out-dir lib",
-    "build:bundle": "webpack --progress --display-chunks --display-reasons --display-error-details --display-modules",
-    "build:production": "NODE_ENV=production npm run build",
-    "dev-server": "npm run build && webpack-dev-server --inline --hot",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint webpack.config.js --ext .js --ext .jsx src",
-    "migrate": "sequelize db:migrate --config sequelize.config.json"
+    "build": "webpack --config=webpack/webpack.config.js",
+    "dev": "webpack-dev-server --config=webpack/webpack.config.dev.js",
+    "test": "jest"
   },
   "dependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
     "bootstrap": "^3.3.7",
@@ -39,6 +32,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-draggable": "^2.2.3",
+    "react-hot-loader": "^4.0.0",
     "react-loadable": "^4.0.3",
     "react-redux": "^5.0.2",
     "react-router-dom": "^4.1.1",
@@ -50,6 +44,7 @@
     "sequelize": "^3.29.0",
     "sqlite3": "^3.1.8",
     "string-hash": "^1.1.1",
+    "universal-cookie": "^2.1.2",
     "uuid": "^3.0.1",
     "uws": "^8.14.0"
   },

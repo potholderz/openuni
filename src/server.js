@@ -5,7 +5,7 @@ import os from 'os';
 import cp from 'child_process';
 
 
-const debug = require('debug')('overrustle:master');
+const debug = require('debug')('openuni:master');
 
 if (cluster.isMaster) {
 

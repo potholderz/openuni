@@ -2,25 +2,25 @@
           DISCORD_URL GIT_COMMIT_HASH GIT_SHORT_COMMIT_HASH */
 import React from 'react';
 
-import '../css/Footer';
+import '../scss/Footer.scss';
 import GitHubCommitLink from './GitHubCommitLink';
 
 
 const external_links = [
   {
-    href: DONATE_PAYPAL_URL,
+    href: "https://github.com/potholderz/openuni",
     children: 'Paypal',
   },
   {
-    href: DONATE_LINODE_URL,
+    href: "https://github.com/potholderz/openuniL",
     children: 'Linode',
   },
   {
-    href: DONATE_DO_URL,
+    href: "https://github.com/potholderz/openuni",
     children: 'DigitalOcean',
   },
   {
-    href: GITHUB_URL,
+    href: "https://github.com/potholderz/openuni",
     children: 'GitHub',
   },
 ];
@@ -31,7 +31,7 @@ const Footer = () =>
       <p className='text-muted'>
         OverRustle.com, an unofficial <a href='https://destiny.gg'>destiny.gg</a> community
         <br />
-        By <a href={`${GITHUB_URL}/graphs/contributors`}>memers</a> on <a href={`${DISCORD_URL}`}>discord</a>
+        By <a href={`https://github.com/potholderz/openuni/graphs/contributors`}>memers</a> on <a href={``}>discord</a>
         <br />
         Support us via{'\u00a0'}
         {
@@ -49,7 +49,6 @@ const Footer = () =>
         <br />
         <a href='/api'>API</a>
         &nbsp; &bull; &nbsp;
-        <GitHubCommitLink hash={GIT_COMMIT_HASH} short={GIT_SHORT_COMMIT_HASH} />
       </p>
     </div>
   </footer>

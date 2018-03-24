@@ -45,7 +45,7 @@ const thunks = {
 };
 
 export const init = store => {
-  socket = new WebSocket(API_WS || `ws://${location.host}`);
+  socket = new WebSocket(`ws://overrustle.com/api` || `ws://${location.host}`);
   let messageQueue = [];
   let wasReconnect = false;
   emit = (...args) => {

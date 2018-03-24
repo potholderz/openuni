@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
 import cs from 'classnames';
 
-import '../css/Resizeable';
+import '../scss/Resizeable.scss';
 
 
 class Resizeable extends React.Component {

@@ -4,7 +4,7 @@ import { emit } from './websocket';
 
 
 export const setStream = (...args) => () => {
-  emit('setStream', ...args);
+  // emit('setStream', ...args);
 };
 
 

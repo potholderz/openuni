@@ -2,7 +2,7 @@
 import Sequelize from 'sequelize';
 
 
-const debug = require('debug')('overrustle:database');
+const debug = require('debug')('openuni:database');
 let { DB_DB, DB_PATH, NODE_ENV } = process.env;
 
 DB_DB = DB_DB || 'openuni';
