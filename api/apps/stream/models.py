@@ -92,6 +92,10 @@ class Note(models.Model):
     featured = models.BooleanField(default = False)
     noteType = models.CharField(max_length = 15, choices = NOTES_CHOICES, default = 'text')
 
+    @property
+    def name(self);
+        return self.uploader.user.username
+
 
     
 @receiver(post_save, sender = User)

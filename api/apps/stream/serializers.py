@@ -52,12 +52,14 @@ class NoteCreateUpdateSerializer(ModelSerializer):
         ]
 
 class NoteDetailSerialzer(ModelSerializer):
+    name = ReadOnlyField()
     class Meta:
         model = Note
         fields = [
             'id',
             'title',
             'description',
+            'name',
             'uploader',
             'service',
             'link',
@@ -65,11 +67,14 @@ class NoteDetailSerialzer(ModelSerializer):
         ]
 
 class NoteListSerializer(ModelSerializer):
+    name = ReadOnlyField()
     class Meta:
         model = Note
         fields = [
+            'id',
             'title',
             'uploader',
+            'name',
             'service',
             'noteType'
         ]
