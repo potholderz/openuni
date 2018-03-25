@@ -35,6 +35,10 @@ class Stream(models.Model):
     @property
     def streamer(self):
         return self.profile
+    
+    @property
+    def streamer_name(self):
+        return self.profile.user.username
         
 
 class Profile(models.Model):

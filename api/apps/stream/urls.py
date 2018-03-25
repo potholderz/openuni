@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^stream/$', views.StreamList.as_view()),
     url(r'^stream/(?P<pk>[0-9]+)/$', views.StreamDetail.as_view()),
     url(r'^stream/edit/(?P<pk>[0-9]+)/$', views.StreamDetail.as_view()),
-    url(r'^profile/$', views.ProfileDetail.as_view()),
+    url(r'^profile/$', views.ProfileList.as_view()),
     url(r'^profile/(?P<pk>[0-9]+)/$', views.ProfileDetail.as_view()),
     url(r'^profile/edit/(?P<pk>[0-9]+)/$', views.ProfileUpdate.as_view()),
     url(r'^note/$', views.NoteList.as_view()),

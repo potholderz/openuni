@@ -89,23 +89,22 @@ class ProfileCreateUpdateSerializer(ModelSerializer):
 
 class ProfileDetailSerializer(ModelSerializer):
     name = ReadOnlyField()
-    uploads = NoteListSerializer(read_only = True)
+    uploads = NoteListSerializer(many = True, read_only = True)
     class Meta:
         model = Profile
         fields = [
             'id',
-            'name'
+            'name',
             'user',
             'stream',
             'uploads'
         ]
 
 class ProfileListSerializer(ModelSerializer):
-    name = ReadOnlyField()
     class Meta:
         model = Profile
         fields = [
-            'id'
+            'id',
             'name'
         ]
 
@@ -115,7 +114,7 @@ class StreamCreateUpdateSerializer(ModelSerializer):
         model = Stream
         fields = [
             'title',
-            'description'
+            'description',
             'channel',
             'service',
             'live'
@@ -128,7 +127,7 @@ class StreamDetailSerializer(ModelSerializer):
         fields = [
             'id',
             'title',
-            'description'
+            'description',
             'channel',
             'service',
             'live',

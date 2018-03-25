@@ -67,6 +67,11 @@ class ProfileDetail(RetrieveAPIView):
     serializer_class = ProfileDetailSerializer
     permission_classes = [AllowAny]
 
+class ProfileList(ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileListSerializer 
+    permission_classes = [AllowAny]
+
 class NoteCreate(CreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteCreateUpdateSerializer
