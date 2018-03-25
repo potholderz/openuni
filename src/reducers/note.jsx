@@ -21,7 +21,7 @@ export default function Reducer(
             fecthing: false,
             fetched: true,
             id: action.payload.id,
-            note: action.payload.note,
+            note: action.payload,
             }
          break;
       }

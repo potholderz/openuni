@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../scss/MainLayout.scss';
-
 import Header from './Header';
 import Footer from './Footer';
 
@@ -13,13 +11,13 @@ const MainLayout = ({
   history,
   children,
 }) =>
-  <div className='main-layout flex-column'>
+  <div>
     {showHeader ? <Header rustlerCount={rustlerCount} history={history} /> : null}
     <div className='eight columns'>
       {children}
     </div>
     <div id='chat' className='four columns'>
-        [Chat Goes Here]
+      [Chat Goes Here]
     </div>
     <div className='u-cf'></div>
   </div>

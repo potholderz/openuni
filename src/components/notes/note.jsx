@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {Link} from 'react-router';
+import lifecycle from 'recompose/lifecycle';
+
+import MainLayout from '../index';
 
 
-class Note extends Component {
-  componentWillMount() {
-     this.props.dispatch(fetchNote(this.props.note.id ))
-  }
+const Note = () => {
+  return (
+    <MainLayout history={history}>
+      hi
+    </MainLayout>
+  );
+};
 
-  render() {
-    return (
-      <div className='message-wrapper'>
-        <img className='profile-image' src={ this.props.user.avatarUrl } />
-          { this.props.user.username }
-          { this.props.message }
-          { this.props.date }
-      </div>
-    )
-  }
-}
 
-function mapStateToProps(state) {
-  return {
-    note: state.note,
-  };
-}
-
-export default connect(mapStateToProps)(Note);
+export default Note;

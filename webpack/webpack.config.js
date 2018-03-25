@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
-let API_HOST = 'api-dev.cozy.nyc';
+let API_HOST = '';
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
