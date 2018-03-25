@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MainLayout from './MainLayout';
+import MainLayout from './index';
 
 
 const Error404 = ({ history }) =>

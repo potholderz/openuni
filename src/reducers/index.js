@@ -6,6 +6,8 @@ import streamsReducer from './streams';
 import uiReducer from './ui';
 import loadingReducer from './loading';
 import notesReducer from './notes';
+import noteReducer from './note';
+import basicStreamsReducer from './basic-streams'
 
 
 export default combineReducers({
@@ -15,4 +17,6 @@ export default combineReducers({
   ui: uiReducer,
   self: selfReducer,
   notes: notesReducer,
+  note:noteReducer,
+  basicStreams:basicStreamsReducer,
 });

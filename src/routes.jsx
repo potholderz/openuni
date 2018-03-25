@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import AsyncProfile from './components/AsyncProfile';
 import AsyncStream from './components/lectures/AsyncStream';
 import AsyncStreams from './components/lectures/AsyncStreams';
+import Home from './components/home';
 import Notes from './components/notes';
 import Note from './components/notes/note';
 import Banned from './components/Banned';
@@ -14,6 +15,7 @@ import Logout from './components/Logout';
 const Routes = () =>
   <div className='routes'>
     <Switch>
+      <Route exact path='/' component={Home} />
       <Route exact path='/lectures/' component={AsyncStreams} />
       <Route exact path='/notes/' component={Notes} />
       <Route path='/notes/:noteid' component={Note} />

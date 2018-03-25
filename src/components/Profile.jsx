@@ -6,7 +6,7 @@ import lifecycle from 'recompose/lifecycle';
 
 import { fetchProfile, updateProfile } from '../actions';
 import Checkbox from './Checkbox';
-import MainLayout from './MainLayout';
+import MainLayout from './index';
 import ServiceSelect from './ServiceSelect';
 
 
