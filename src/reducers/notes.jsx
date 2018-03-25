@@ -1,6 +1,5 @@
 export default function Reducer(
    state={
-      id: -1,
       fetching: false,
       fetched: false,
       notes: [],
@@ -20,8 +19,7 @@ export default function Reducer(
             ...state,
             fecthing: false,
             fetched: true,
-            id: action.payload.id,
-            notes: action.payload.notes,
+            notes: action.payload,
             }
          break;
       }

@@ -2,7 +2,7 @@ import api from '../util/api';
 
 export function fetchNotes() {
    return function(dispatch) {
-     api.get('/notes')
+     api.get('/note')
         .then((response) => {
            dispatch({type: "FETCH_NOTES_FULFILLED", payload: response.data})
         })
@@ -15,7 +15,7 @@ export function fetchNotes() {
 
 export function fetchNote(id) {
    return function(dispatch) {
-     api.get('/notes/'+id )
+     api.get('/note/'+id )
         .then((response) => {
            dispatch({type: "FETCH_NOTE_FULFILLED", payload: response.data})
         })
