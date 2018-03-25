@@ -8,8 +8,6 @@ import cs from 'classnames';
 import setPropTypes from 'recompose/setPropTypes';
 import get from 'lodash/get';
 
-import '../scss/Header.scss';
-
 import { toggleChat } from '../actions';
 import { supportedChatServices } from '../util/supported-chats';
 import HeaderForm from './HeaderForm';
@@ -28,7 +26,7 @@ const Header = ({
   if (rustlerCount) {
     const [ rCount, vCount ] = rustlerCount;
     if (rCount) {
-      rustlers = <li><a>{rCount} Rustlers</a></li>;
+      rustlers = <li><a>{rCount} Students</a></li>;
     }
     if (vCount) {
       viewers = <li><a>{vCount} Viewers</a></li>;
@@ -41,7 +39,11 @@ const Header = ({
     >
       <div className='container-fluid'>
         <div className='navbar-header'>
-          <Link className='navbar-brand' to='/'>OverRustle</Link>
+          <Link className='navbar-brand' to='/'>OpenUni</Link>
+        </div>
+        <div>
+          <Link to={'/lectures'}>Lectures</Link>
+          <Link to={'/notes'}>Notes</Link>
         </div>
         <div className='collapse navbar-collapse'>
           <ul className='nav navbar-nav'>
@@ -51,9 +53,6 @@ const Header = ({
           <ul className='nav navbar-nav navbar-right'>
             {!currentStreamService || !supportedChatServices.has(currentStreamService) ? null : <li onClick={() => toggleChat(false)} className={cs({ active: !isOtherChatActive })}><a role='button'>Destiny Chat</a></li>}
             {!currentStreamService || !supportedChatServices.has(currentStreamService) ? null : <li onClick={() => toggleChat(true)} className={cs('text-capitalize', { 'active': isOtherChatActive })}><a role='button'>{currentStreamService} Chat</a></li>}
-            <li>
-              <HeaderForm history={history} />
-            </li>
             <li>
               <div className='btn-group'>
                 {

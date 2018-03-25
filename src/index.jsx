@@ -10,7 +10,7 @@ import Routes from './routes';
 import history from './history';
 import store from './store';
 
-import './scss/main.scss';
+require('./assets/scss/main.scss');
 
 ReactDOM.render(
   <Provider store={store}>

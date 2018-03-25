@@ -2,8 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AsyncProfile from './components/AsyncProfile';
-import AsyncStream from './components/AsyncStream';
-import AsyncStreams from './components/AsyncStreams';
+import AsyncStream from './components/lectures/AsyncStream';
+import AsyncStreams from './components/lectures/AsyncStreams';
+import Notes from './components/notes';
+import Note from './components/notes';
 import Banned from './components/Banned';
 import Error404 from './components/Error404';
 import Logout from './components/Logout';
@@ -12,7 +14,9 @@ import Logout from './components/Logout';
 const Routes = () =>
   <div className='routes'>
     <Switch>
-      <Route exact path='/' component={AsyncStreams} />
+      <Route exact path='/lectures' component={AsyncStreams} />
+      <Route exact path='/notes' component={Notes} />
+      <Route path='/notes/:noteid' component={Note} />
       <Route path='/strims' component={AsyncStreams} />
       <Route path='/profile' component={AsyncProfile} />
       <Route path='/logout' component={Logout} />

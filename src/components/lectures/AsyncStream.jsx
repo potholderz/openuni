@@ -1,8 +1,10 @@
 /* global API */
 import React from 'react';
 
-import Error404 from './Error404';
-import Loadable from './Loadable';
+import Error404 from '../Error404';
+import Loadable from '../Loadable';
+
+import Stream from './Stream';
 
 
 const AsyncStream = ({
@@ -21,7 +23,7 @@ const AsyncStream = ({
 
         // Otherwise, we're at the `/:streamer` route, and we need to fetch the
         // service and channel for this streamer.
-        return fetch(`${API}/streamer/${streamer}`).then(res => res.json());
+        return fetch(`https://overrustle.com/api/streamer/${streamer}`).then(res => res.json());
       },
     },
     render(loaded) {
