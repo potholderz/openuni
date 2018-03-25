@@ -65,7 +65,6 @@ class NoteDetailSerialzer(ModelSerializer):
         ]
 
 class NoteListSerializer(ModelSerializer):
-    uploader = ReadOnlyField()
     class Meta:
         model = Note
         fields = [
