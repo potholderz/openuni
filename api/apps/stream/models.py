@@ -93,7 +93,7 @@ class Note(models.Model):
     noteType = models.CharField(max_length = 15, choices = NOTES_CHOICES, default = 'text')
 
     @property
-    def name(self);
+    def name(self):
         return self.uploader.user.username
 
 
