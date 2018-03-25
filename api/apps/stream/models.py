@@ -85,10 +85,10 @@ class Note(models.Model):
 
 
     title = models.CharField(max_length = 100)
-    description = models.TextField()
+    description = models.TextField(blank = True)
     uploader = models.ForeignKey(Profile, on_delete = models.CASCADE, related_name='uploads')
-    service = models.CharField(max_length = 100)
-    link = models.CharField(max_length = 100)
+    service = models.CharField(max_length = 100, blank = True)
+    link = models.CharField(max_length = 100, blank = True)
     featured = models.BooleanField(default = False)
     noteType = models.CharField(max_length = 15, choices = NOTES_CHOICES, default = 'text')
 
