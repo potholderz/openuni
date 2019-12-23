@@ -1,5 +1,18 @@
 # openuni
 
+OpenUni is a project that I'm still interested in working on in the future.
+The goal for the site is to provide videos, textbooks, and notes for free for
+anyone. Users can upload/link media that they find informative/educational.
+
+For the hackathon we focused on getting streaming and video sharing down. We did
+this by using [Rustla2](https://github.com/MemeLabs/Rustla2) by
+[MemeLabs](https://github.com/MemeLabs) because its a MIT licensed livestream
+site that [strims.gg](https://strims.gg) uses.
+
+Ran into a couple of problems using this as a code base. The documentation isn't
+that good, especially for running the site. I thought I figured it out and even
+made a pull requests with the changes in the documentation, but those instructions
+did seem to work anymore by the time the hackathon came along.
 
 ## Setup
 
